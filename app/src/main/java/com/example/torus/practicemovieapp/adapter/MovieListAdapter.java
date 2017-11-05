@@ -1,6 +1,7 @@
 package com.example.torus.practicemovieapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.torus.practicemovieapp.Constant.Constant;
+import com.example.torus.practicemovieapp.MovieDetailedView;
 import com.example.torus.practicemovieapp.R;
 import com.example.torus.practicemovieapp.module.MovieDb;
 import com.squareup.picasso.Picasso;
@@ -38,12 +40,25 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
         MovieDb movieDb = movieDbList.get(position);
-        String moviePoster = movieDb.getImagePath();
-        String movieTitle = movieDb.getMovieTitle();
-        String movieSynopsis = movieDb.getMovieSynopsis();
-        String movieReleaseDate = movieDb.getMovieReleaseDate();
-        String movieRating = movieDb.getMovieRating();
+        final String moviePoster = movieDb.getImagePath();
+        final String movieTitle = movieDb.getMovieTitle();
+        final String movieSynopsis = movieDb.getMovieSynopsis();
+        final String movieReleaseDate = movieDb.getMovieReleaseDate();
+        final String movieRating = movieDb.getMovieRating();
         Picasso.with(context).load(Constant.POSTER_PATH + moviePoster).into(holder.imageViewMoviePoster);
+        holder.imageViewMoviePoster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMovieDetailedView=new Intent();
+                intentMovieDetailedView.putExtra(Constant.MOVIE_TITLE,movieTitle);
+                intentMovieDetailedView.putExtra(Constant.MOVIE_IMAGE_POSTER,moviePoster);
+                intentMovieDetailedView.putExtra(Constant.MOVIE_SYNOPSIS,movieSynopsis);
+                intentMovieDetailedView.putExtra(Constant.MOVIE_RATING,movieRating);
+                intentMovieDetailedView.putExtra(Constant.MOVIE_ReleaseDate,movieReleaseDate);
+                intentMovieDetailedView.setClass(context, MovieDetailedView.class);
+                context.startActivity(intentMovieDetailedView);
+            }
+        });
     }
 
     @Override

@@ -32,19 +32,21 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     MovieListAdapter movieListAdapter;
     List<MovieDb> movieDbList;
-   String movieDbUrl=Constant.END_POINT;
-    String movieSort=Constant.SORT_BY_POPULAR;
+    String movieDbUrl;
+    String movieSort;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initObjects();
-        String movieUrlQuery=movieDbUrl+movieSort;
+        String movieUrlQuery = movieDbUrl + movieSort;
         loadMovieData(movieUrlQuery);
     }
 
     public void initObjects() {
         setContentView(R.layout.activity_main);
+         movieDbUrl = Constant.END_POINT;
+         movieSort = Constant.SORT_BY_POPULAR;
         context = this;
         movieDbList = new ArrayList<>();
         recyclerViewMovieList = (RecyclerView) findViewById(R.id.r_v_movie_db_list);
@@ -91,25 +93,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater=getMenuInflater();
-        menuInflater.inflate(R.menu.setting,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.setting, menu);
         return true;
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int selectedItemId=item.getItemId();
-        if(selectedItemId==R.id.menu_sort_by_top_rated)
-        {
-            movieSort=Constant.SORT_BY_TOP_RATED;
-            String movieUrlQuery=movieDbUrl+movieSort;
+        int selectedItemId = item.getItemId();
+        if (selectedItemId == R.id.menu_sort_by_top_rated) {
+            movieSort = Constant.SORT_BY_TOP_RATED;
+            String movieUrlQuery = movieDbUrl + movieSort;
             loadMovieData(movieUrlQuery);
-        }
-        else if(selectedItemId==R.id.menu_sort_by_popular)
-        {
-            movieSort=Constant.SORT_BY_POPULAR;
-            String movieUrlQuery=movieDbUrl+movieSort;
+        } else if (selectedItemId == R.id.menu_sort_by_popular) {
+            movieSort = Constant.SORT_BY_POPULAR;
+            String movieUrlQuery = movieDbUrl + movieSort;
             loadMovieData(movieUrlQuery);
         }
         return super.onOptionsItemSelected(item);

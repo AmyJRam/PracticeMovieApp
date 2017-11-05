@@ -9,7 +9,7 @@ public class MovieDb {
     String movieTitle;
     String movieSynopsis;
     String movieRating;
-
+    String movieReleaseDate;
     public String getMovieReleaseDate() {
         return movieReleaseDate;
     }
@@ -18,7 +18,7 @@ public class MovieDb {
         this.movieReleaseDate = movieReleaseDate;
     }
 
-    String movieReleaseDate;
+
 
     public String getImagePath() {
         return imagePath;
