@@ -4,10 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,8 @@ public class MovieDetailedView extends AppCompatActivity {
     }
     public void initObjects() {
         setContentView(R.layout.activity_movie_details);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         context = this;
         textViewMovieRating=(TextView)findViewById(R.id.textView_movie_rating);
         textViewMovieReleaseDate=(TextView)findViewById(R.id.textView_movie_release_date);
@@ -66,6 +70,12 @@ public class MovieDetailedView extends AppCompatActivity {
         textViewMovieSynopsis.setText(movieSynopsis);
         Picasso.with(context).load(Constant.POSTER_PATH + movieImagePath).into(imageViewMoviePoster);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
+}
 
 
