@@ -13,7 +13,7 @@ import com.example.torus.practicemovieapp.Constant.Constant;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by TORUS on 11/5/2017.
+ * Created by amy on 11/5/2017.
  */
 
 public class MovieDetailedView extends AppCompatActivity {
