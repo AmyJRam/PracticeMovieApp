@@ -2,22 +2,15 @@ package com.example.torus.practicemovieapp;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.torus.practicemovieapp.Constant.Constant;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 /**
  * Created by TORUS on 11/5/2017.
@@ -74,7 +67,7 @@ public class MovieDetailedView extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }
 
